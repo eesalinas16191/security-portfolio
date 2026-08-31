@@ -26,7 +26,6 @@ Situation involved myself investigating and locating an out of the ordinary reso
 "Cloud computing, Cloud services, live multi-user Azure training tenant, Reader access."
 
 ## Investigation
-The core. Numbered steps IN YOUR OWN WORDS: what you looked at, what you found, what you concluded at each step. 6 to 12 screenshots of meaningful moments (portal views, query results, before/after).
 Step 1: I first focused on locating the origin of the mishandled deployment by scanning the resource groups and looking for any of them that did not adhere to the Microsoft Naming Convention principles. After searching for a bit, I found a resource group name that was out of the ordinary which prompted further investigation. 
 <img width="1600" height="900" alt="Untitled" src="https://github.com/user-attachments/assets/e5c9aaf1-47e4-4ce5-a195-1a580bbcf7b5" />
 I concluded that because the intern didn't commit to the proper naming practices of resource groups, searching for the issue's name became easier to identify.
