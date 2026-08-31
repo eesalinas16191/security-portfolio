@@ -1,17 +1,44 @@
 # security-portfolio
-# Security Portfolio: [Your Name]
+# Security Portfolio: [Edson Salinas]
 
 Documented cloud security investigations, built in a live Azure tenant
 (Mad Hat Labs, a multi-user training environment).
 
 Target role: SOC Analyst / Security Analyst
-Currently: [your role] | [Harlingen]
+Currently: [CNA] | [Harlingen]
 Contact: [edsonsalinas281@gmail.com] · [www.linkedin.com/in/edson-salinas-399b281a9]
 
 ## Investigations
-| # | Title | Focus | Write-up |
-|---|-------|-------|----------|
-| 1 | Operation Dead Deploy | Governance forensics, deployment audit trail | coming, week 1 |
+
+| 1 |
+
+# [Operation Dead Deploy, "Investigated Unauthorized Usage of Resources"]
+
+## Scenario
+A recent intern had left a deployment running after being given access to run a temporary experiment which led to unexpected problems. The investigation had concluded that mismanaged policy assignments was the reason as to why the intern was able to deploy the resource group even when it violated the rules. 
+
+
+Situation involved myself investigating and locating an out of the ordinary resource group which was found to be unauthorized. It did not adhere to the Microsoft Naming Convention which made it stick out, prompting further investigation into it's origin.  
+
+## Environment
+"Cloud computing, Cloud services, live multi-user Azure training tenant, Reader access."
+
+## Investigation
+The core. Numbered steps IN YOUR OWN WORDS: what you looked at, what you found, what you concluded at each step. 6 to 12 screenshots of meaningful moments (portal views, query results, before/after).
+Step 1: I first focused on locating the origin of the mishandled deployment by scanning the resource groups and looking for any of them that did not adhere to the Microsoft Naming Convention principles. After searching for a bit, I found a resource group name that was out of the ordinary which prompted further investigation. 
+<img width="1600" height="900" alt="Untitled" src="https://github.com/user-attachments/assets/e5c9aaf1-47e4-4ce5-a195-1a580bbcf7b5" />
+
+
+
+## What broke / what surprised me
+The most credible section in the document. Dead ends, wrong guesses, the thing that took an hour. Employers know real work is messy. This section separates you from certificate collectors.
+
+## Findings and recommendations
+What you determined, plus 2 or 3 recommendations as if you were reporting to the resource owner.
+
+## What I learned
+3 to 5 bullets. At least one technical, one "what I'd do differently."
+
 | 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | coming, week 2 |
 | 3 | Privilege Audit | RBAC and least privilege | coming, week 3 |
 | 4 | Spin Up and Lock Down | Compute attack surface | coming, week 4 |
