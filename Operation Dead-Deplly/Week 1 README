@@ -14,6 +14,7 @@ Step 1: I first focused on locating the origin of the mishandled deployment by s
 
 <img width="1600" height="900" alt="Untitled" src=" />
 
+![Descriptive Alt Text](images/Step 1.jpeg)
 
 
 I concluded that because the intern didn't commit to the proper naming practices of resource groups, searching for the issue's name became easier to identify.
