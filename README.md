@@ -12,9 +12,7 @@ Contact: [edsonsalinas281@gmail.com] · [www.linkedin.com/in/edson-salinas-399b2
 
 ## Investigations
 
-| 1 |
-
-# [Operation Dead Deploy, "Investigated Unauthorized Usage of Resources"]
+| 1 | # [Operation Dead Deploy, "Investigated Unauthorized Usage of Resources"] Read Me
 
 ## Scenario
 A recent intern had left a deployment running after being given access to run a temporary experiment which led to unexpected problems. The investigation had concluded that mismanaged policy assignments was the reason as to why the intern was able to deploy the resource group even when it violated the rules. 
