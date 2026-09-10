@@ -12,7 +12,7 @@ Contact: [edsonsalinas281@gmail.com] · [www.linkedin.com/in/edson-salinas-399b2
 
 ## Investigations
 
-| 1 | Operation Dead Deploy | Governance forensics, deployment audit trail | [Week 1 README](https://github.com/eesalinas16191/security-portfolio/blob/190ede959f5b20c0a3f0256ad6e95a6460fdcb29/Operation%20Dead-Deploy)
+| 1 | Operation Dead Deploy | Governance forensics, deployment audit trail | [Week 1 README](https://github.com/eesalinas16191/security-portfolio/blob/c2345af6206bff798094c71ef5953dca64259dda/Operation%20Dead-Deplly/Week%201%20README)
 
 | 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | coming, week 2 |
 
