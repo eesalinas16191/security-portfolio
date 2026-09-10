@@ -57,11 +57,19 @@ I concluded that the misconfiguration of the policy assignments, the lack of adh
 I was left with a greater understanding of just how crucial naming the appropriate resource groups is. I was also surprised to learn how easily one could cause such an issue if when give just temporary access. This has also made me appreciate how important it is to follow certain practices and carefully monitor the actions displayed on the interface. If given the chance to redo the investigation, I'd probably take a different approach, instead of looking through the names of the resource groups I'd look for unusual signs elsewhere like maybe comparing the costs and spending of the resource groups. 
 
 | 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | coming, week 2 |
+
 | 3 | Privilege Audit | RBAC and least privilege | coming, week 3 |
+
 | 4 | Spin Up and Lock Down | Compute attack surface | coming, week 4 |
+
 | 5 | Network the Operative | Network segmentation | coming, week 5 |
+
 | 6 | Bucket Looting | Storage exposure hunting | coming, week 6 |
+
 | 7 | Find the Anomaly | Log analysis and KQL | coming, week 7 |
+
 | 8 | Hunt the Threat | SIEM operations (Sentinel) | coming, week 8 |
+
 | 9 | Score the Tenant | Cloud security posture | coming, week 9 |
+
 | 10 | The Breach (capstone) | Full incident investigation | coming, week 10 |
