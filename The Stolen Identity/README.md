@@ -16,22 +16,18 @@ Reconstructed a five-stage OAuth consent-phishing kill chain in a live Azure ten
 
 These five steps listed below will outline how the investigation was orchestrated.
 
- ENTRY. A user was phished, completed MFA, and had the resulting session token stolen. That token carried an MFA-satisfied claim, so it sailed past Conditional Access. That user was also, through years of drift, still an Owner on a legacy connector app.
-
-Step 1 ENTRY: I first investigated this breach from the source of it all. That source being a suspicious link being utilized to phish an employee who mistakenly and unknowingly granted permission to a malicious actor during this attack. Knowing this did not raise any alarms on the logs is what gave me the first clue of this being an OAuth consent phishing attack. They stole an access token using this method of attack after completing MFA and used the token to being granted access past the Conditional Access Policies set in place to embed themselves deeper into the victim's portal.  
+Step 1 ENTRY: I first investigated this breach from the source of it all. That source being a suspicious link being utilized to phish an employee who mistakenly and unknowingly granted permission to a malicious actor during this attack. I went looking at what the attacker was targeting which was a specific enterprise app registration. Looking through the app registration page is what led me to the first clue in the Branding & Properties section of the legacy app. After looking at the internal notes compartment of that section gave it made me more confidence that this was an OAuth consent phishing attack alongside the fact that this did not raise any alarms on the logs. They stole an access token using this method of attack after completing MFA and used the token to being granted access past the Conditional Access Policies set in place to embed themselves deeper into the victim's portal.  
 
 <img width="1600" height="900" alt="Week 2 Screenshot 1" src="https://github.com/user-attachments/assets/ce24733a-810b-401b-afbf-c2241ae4e8be" />
 <img width="1600" height="900" alt="Week 2 Screenshot 2" src="https://github.com/user-attachments/assets/74ef309e-c026-49c4-a03c-b06827b95721" />
 <img width="1600" height="900" alt="Week 2 Screeshot 3" src="https://github.com/user-attachments/assets/a8162f07-d377-41e8-b283-5d2244c29fa6" />
 <img width="1600" height="900" alt="Week 2 Screenshot 4" src="https://github.com/user-attachments/assets/eeea281a-e177-428d-9535-77e0c87c9b83" />
 
-
- ESCALATE. Using those Owner rights, the attacker minted a new client secret on the legacy app. That secret let them authenticate through the client credentials flow as the service principal itself, inheriting the app's directory permissions without ever signing in as a human again. Note the expiry date: set nearly a century out.
+Step 2 ESCALATE: This confirmed the suspicion that the victim was the owner of a legacy connector app. Further investigation led me to look in the Open Certificates & Secrets tab of this legacy app and check the Client secrets area of the page. After observing the activity from this clue I concluded that the attacker configured his way into using the victim’s power to make a brand new client secret on the app. In an attempt to gain more privileges, the attacker successfully used the new client to upgrade their authority over the apps directory permissions. In addition, they also established a sneaky way of remaining control by configuring the expiration date on the client secret to be online for an absurd amount of time. I concluded that this malicious agent was constantly looking for ways to penetrate into the portal further through granted themselves more privileged access, using weaker levels of assurance like client secrets and grounding their presence stay in power for an extended period of time. 
 
 <img width="1600" height="900" alt="Week 2 Screenshot 5" src="https://github.com/user-attachments/assets/32b36747-04c4-4ba3-a508-062c5ced83da" />
 
-
- PIVOT. A single secret dies when it gets rotated. So the attacker registered their own app (every standard user can do this by default in Entra) and added its service principal to the legacy app's Owners list. Now they can re-credential the legacy app forever, even after the first secret is caught.
+Step 3 PIVOT: Trying to think outside of the box, I asked myself what I would do if I was an attacker trying to remain in control of my access to this compromised app registration. Since rotating secrets was a way for organizations to remain secure I decided to look in the Owner’s list of the legacy app to see if they created a new app registration since that would mean they could potentially have a dangerous amount of unregulated access by making new credentials at their discretion. After seeing there was a specific app registration present in the Owner’s list of the legacy app I went back to the app registration part of the Azure portal to find a service principal under the same name and investigated further. Then moving into the Branding & Properties section of under the manage section of the suspiciously created app registration was the internal notes that proved my conclusion. 
 
 <img width="1600" height="900" alt="Week 2 Screenshot 7" src="https://github.com/user-attachments/assets/1b4c40b3-e0b3-43b9-ac20-71eb6aac6b8f" />
 
@@ -44,8 +40,7 @@ Step 1 ENTRY: I first investigated this breach from the source of it all. That s
 
 <img width="1600" height="900" alt="Week 2 Screenshot 10" src="https://github.com/user-attachments/assets/d3a9cd83-10d2-46c1-8027-60e1e0372938" />
 
-
- PERSIST. Then the backup plan: a custom scope published on the legacy app's Expose an API blade. This turns the legacy app into a callable backend resource, which means the attacker's own app can request delegated access to it.
+Step 4 PERSIST: This led me to my next move, which was looking for more ways that this agent could’ve integrated themselves deeper into it’s target. Like a stubborn tick on a dog that won’t come off, this attacker seemed to love putting multiple safeguards in place for them to remain in constant control. This led my investigation deeper into the Expose an API section of the legacy app because configuring a new API scope means having consistent way for them to ask the legacy app for access. 
 
 <img width="1600" height="900" alt="Week 2 Screenshot 6" src="https://github.com/user-attachments/assets/37e7ab06-bb44-4760-96b8-b3fa00ac6782" />
 
@@ -53,6 +48,10 @@ Step 1 ENTRY: I first investigated this breach from the source of it all. That s
 
 
  LOOT. Finally, a redirect URI on the rogue app pointing at attacker-controlled infrastructure. Combining the rogue app's client ID, that redirect URI, and the exposed API scope produces a working phishing URL. A victim who is already signed in on a corporate device clicks Accept on a consent prompt, and the authorization code lands on the attacker's server.
+
+
+Step 5 LOOT: 
+
 
 ## What broke / what surprised me
 The most credible section in the document. Dead ends, wrong guesses, the thing that took an hour. Employers know real work is messy. This section separates you from certificate collectors.
