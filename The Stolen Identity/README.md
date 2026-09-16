@@ -2,7 +2,7 @@
 
 ## Scenario
 
-In this scenario a malicious agent was granted access to an enterprise app through using a multi step OAuth consent-phishing attack which led to them stealing the necessary tokens necessary for them to bypass the authentication safeguards. They made several configurations inside the 2 app registrations for them to remain in control and reduce suspicion of their activity. This investigations answers the question of what the attacker was able to accomplish through clues left behind in the Azure portal. 
+In this scenario a malicious agent was granted access to an enterprise app through using a multi step OAuth consent-phishing attack which led to them stealing the tokens necessary for them to bypass the authentication safeguards. They made several configurations inside the 2 app registrations for them to remain in control and reduce suspicion of their activity. This investigations answers the question of what the attacker was able to accomplish through clues left behind in the Azure portal. 
 
 ## Environment
 
