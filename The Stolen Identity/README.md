@@ -4,10 +4,6 @@
 
 In this scenario a malicious agent was granted access to an enterprise app through using a multi step OAuth consent-phishing attack which led to them stealing the necessary tokens necessary for them to bypass the authentication safeguards. They made several configurations inside the 2 app registrations for them to remain in control and reduce suspicion of their activity. This investigations answers the question of what the attacker was able to accomplish through clues left behind in the Azure portal. 
 
-
-
-Reconstructed a five-stage OAuth consent-phishing kill chain in a live Azure tenant through forensic analysis of two linked app registrations."
-
 ## Environment
 
 "Cloud computing, Cloud services, live multi-user Azure training tenant, Reader access."
@@ -42,25 +38,23 @@ Step 3 PIVOT: Trying to think outside of the box, I asked myself what I would do
 
 Step 4 PERSIST: This led me to my next move, which was looking for more ways that this agent could’ve integrated themselves deeper into it’s target. Like a stubborn tick on a dog that won’t come off, this attacker seemed to love putting multiple safeguards in place for them to remain in constant control. This led my investigation deeper into the Expose an API section of the legacy app because configuring a new API scope means having consistent way for them to ask the legacy app for access. 
 
-<img width="1600" height="900" alt="Week 2 Screenshot 6" src="https://github.com/user-attachments/assets/37e7ab06-bb44-4760-96b8-b3fa00ac6782" />
-
 <img width="1600" height="900" alt="Week 2 Screenshot 11" src="https://github.com/user-attachments/assets/d86f01da-be30-4983-a338-f445134565bb" />
 
 Step 5 LOOT: Lastly, all roads led to the final construction of a hardy phishing URL that puts together the Expose an API sting from the last step, the redirect URI and the shady app client ID. This proves that users who grant access on a consent prompt gives the rogue app an authorization code that it can redeem for an access token for the specific API that has been exposed. This would give the rogue app the ability to use that token to behave according the scope’s permissions.
 
+<img width="1600" height="900" alt="Week 2 Screenshot 13" src="https://github.com/user-attachments/assets/aad4a552-9fec-4ef8-9ed3-02fcf7c7933c" />
+
+
 ## What broke / what surprised me
-The most credible section in the document. Dead ends, wrong guesses, the thing that took an hour. Employers know real work is messy. This section separates you from certificate collectors.
 
-
- be honest. Most people are surprised that any standard user can register an app by default, and that owning an app registration is effectively an unlogged privilege path that a review of Global Admins would completely miss.
+What didn't break? I ask myself this after looking back on the investigation because during every step something was always off or out of place. Everything from the Expose an API section of the legacy app being deceptively manipulated and the attacker creating a rogue app registration connected to a specific service principal. To the attacker creating a backend path through the legacy app registration and using that method to collect tokens. All of these actions were done in way that abused and tricked specific tools to misuse their authority in malicious ways. This led to me being surprised at how cunning a malicious agent can be if they have true grit. At every step of the investigation I was surprised at how much precaution this attacker had to think outside of the box and create multiple buffers so that they could stay in control. It really opened my eyes at to how crafty some attacks can be and made me realize that constantly learning about these attacks is great way to be aware and stay safe.
  
-
 ## Findings and recommendations
-What you determined, plus 2 or 3 recommendations as if you were reporting to the resource owner.
 
+I determined that identity is extremely important to place safeguards around in order to prevent intrusions. My recommendations would be to have users be very cautious when faced with the opportunity to give permission to apps in general even if they look trustworthy. Alongside with having active investigations targeting suspicious app in the Owner's list of app registrations. I believe another way to prevent this happening again would be to configure certain policies in place that can flag suspicious activity regarding any changes to new client secrets. Another recommendation would be to use a certificate or a managed identity for more secure authentication methods instead of client secrets. Getting rid of the service principle tied to the rogue app registration alongside the manipulated API scope that the attacker created should be put into practice as well. In addition, anything related to the attacker's actions like their redirect URI should also be deleted. Default users should also be placed on a stricter set of privileges by getting rid of their ability to create app registrations. Taking a look at the Graph app permissions should also be of concern as reducing the permissions can help reduce the range of an attack.   
 
-
-Findings and recommendations, written like a real report: revoke the client secret · remove the rogue service principal from Owners · delete the custom exposed API scope · revoke the OAuth2PermissionGrant explicitly, because containment does not remove it · remove the attacker redirect URI · review and reduce the Graph application permissions · disable default user app registration · audit every app registration's Owners list the same way you audit directory role membership · alert on new client secrets and new redirect URIs.
+<img width="1600" height="900" alt="Week 2 Screenshot 6" src="https://github.com/user-attachments/assets/70aba9e3-23f6-4e3a-b166-e82090dc1de5" />
 
 ## What I learned
 3 to 5 bullets. At least one technical, one "what I'd do differently."
+I learned that OAuth stood for Open Authorization and not Open Authentication because there is a distinction between the 2 terms. Since authentication is for proving identity, authorization deals with granting permission to other apps as to not have to create new accounts. This made more sense regarding the investigation having to deal with this type of attack. In my opinion, I learned that OAuth is more of an appeal to convenience over security even if at it's core is still rooted in security. In the end, I've learned that I would've implemented a stricter set of policies in place for many of the tools in the portal. 
