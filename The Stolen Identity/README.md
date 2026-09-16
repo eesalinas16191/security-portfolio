@@ -56,5 +56,4 @@ I determined that identity is extremely important to place safeguards around in 
 <img width="1600" height="900" alt="Week 2 Screenshot 6" src="https://github.com/user-attachments/assets/70aba9e3-23f6-4e3a-b166-e82090dc1de5" />
 
 ## What I learned
-3 to 5 bullets. At least one technical, one "what I'd do differently."
 I learned that OAuth stood for Open Authorization and not Open Authentication because there is a distinction between the 2 terms. Since authentication is for proving identity, authorization deals with granting permission to other apps as to not have to create new accounts. This made more sense regarding the investigation having to deal with this type of attack. In my opinion, I learned that OAuth is more of an appeal to convenience over security even if at it's core is still rooted in security. In the end, I've learned that I would've implemented a stricter set of policies in place for many of the tools in the portal. 
