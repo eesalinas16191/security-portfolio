@@ -46,13 +46,7 @@ Step 4 PERSIST: This led me to my next move, which was looking for more ways tha
 
 <img width="1600" height="900" alt="Week 2 Screenshot 11" src="https://github.com/user-attachments/assets/d86f01da-be30-4983-a338-f445134565bb" />
 
-
- LOOT. Finally, a redirect URI on the rogue app pointing at attacker-controlled infrastructure. Combining the rogue app's client ID, that redirect URI, and the exposed API scope produces a working phishing URL. A victim who is already signed in on a corporate device clicks Accept on a consent prompt, and the authorization code lands on the attacker's server.
-
-
-Step 5 LOOT: 
-
-
+Step 5 LOOT: Lastly, all roads led to the final construction of a hardy phishing URL that puts together the Expose an API sting from the last step, the redirect URI and the shady app client ID. This proves that users who grant access on a consent prompt gives the rogue app an authorization code that it can redeem for an access token for the specific API that has been exposed. This would give the rogue app the ability to use that token to behave according the scope’s permissions.
 
 ## What broke / what surprised me
 The most credible section in the document. Dead ends, wrong guesses, the thing that took an hour. Employers know real work is messy. This section separates you from certificate collectors.
