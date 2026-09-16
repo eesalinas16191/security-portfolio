@@ -1,4 +1,4 @@
-# [The Stolen Identity"]
+# [The Stolen Identity]
 
 ## Scenario
 
