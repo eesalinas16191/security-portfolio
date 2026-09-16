@@ -14,7 +14,7 @@ Contact: [edsonsalinas281@gmail.com] · [www.linkedin.com/in/edson-salinas-399b2
 
 | 1 | Operation Dead Deploy | Governance forensics, deployment audit trail | [Week 1 README](https://github.com/eesalinas16191/security-portfolio/tree/6fc72f66ab405b4743674e72fb0a02eceb30363d/Operation%20Dead-Deplly)
 
-| 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | coming, week 2 |
+| 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | [Week 2 README]()
 
 | 3 | Privilege Audit | RBAC and least privilege | coming, week 3 |
 
