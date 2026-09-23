@@ -16,7 +16,7 @@ Contact: [edsonsalinas281@gmail.com] · [www.linkedin.com/in/edson-salinas-399b2
 
 | 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | [Week 2 README](https://github.com/eesalinas16191/security-portfolio/blob/213cf1726fe56337986e537c9b936949d84de454/The%20Stolen%20Identity/README.md)
 
-| 3 | Privilege Audit | RBAC and least privilege | coming, week 3 |
+| 3 | Privilege Audit | RBAC and least privilege | [Week 3 README]()
 
 | 4 | Spin Up and Lock Down | Compute attack surface | coming, week 4 |
 
