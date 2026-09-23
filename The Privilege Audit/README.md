@@ -1,1 +1,8 @@
-🔒 Project Title: Virtual Lab Privileged Access Audit & Hardening Report1. Executive SummaryProject Overview: High-level summary of the virtual lab environment (e.g., Active Directory, AWS/Azure cloud, Linux enterprise environment).Audit Objective: The goal of the audit (e.g., to identify over-privileged accounts, enforce the Principle of Least Privilege (PoLP), and eliminate shadow admins).High-Level Deliverables: What this repository contains (e.g., Audit checklist, automation scripts, finding log, and remediation configurations).
+🔒 Project Title: Virtual Lab Privileged Access Audit & Hardening Report.
+
+The Audit Path
+
+1. Finding: Baseline
+   Access Control (IAM) blade and the role assignment export. The no-tooling baseline. Shows every principal with access at a scope, including inherited grants. Blind spot: it lists groups but not their members, and it tends to bury the orphaned "Identity not found" assignments.
+   
+   
