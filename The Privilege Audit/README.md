@@ -58,6 +58,7 @@ After the activation of the necessary eligibility role it gave me the ability to
 <img width="1366" height="768" alt="Azure Lab 3 SS5 3" src="https://github.com/user-attachments/assets/5e7d081c-66dc-4039-a8b2-98d3de552277" />
 
 
+The different methods used in this audit, and their respective pros and cons are listed below:
 
    
 | Method               | Sees                                        | Misses                              |
