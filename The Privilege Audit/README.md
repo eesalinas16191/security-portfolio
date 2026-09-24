@@ -61,12 +61,12 @@ After the activation of the necessary eligibility role it gave me the ability to
 The different methods used in this audit, and their respective pros and cons are listed below:
 
    
-| Method               | Sees                                        | Misses                              |
-|----------------------|---------------------------------------------|-------------------------------------|
-| IAM blade / export   | Active assignments at scope, inherited      | Group members, orphaned principals  |
-| Azure CLI            | Same, plus null principalName (orphans)     | One scope per run                   |
-| Resource Graph (KQL) | Whole tenant in one query                   | Eligible assignments                |
-| PIM export           | Eligible vs active, activation history      | Assignments outside PIM             |
+| Method               | Pros                                                     | Cons                                            |
+|----------------------|----------------------------------------------------------|-------------------------------------------------|
+| IAM blade / export   | Active assignments at scope, inherited                   | Group members, orphaned principals, Narrow scope|
+| Azure CLI            | Same + null principalName (orphans), scriptable commands | One scope per run                               |
+| Resource Graph (KQL) | Whole tenant in one query                                | Eligible assignments                            |
+| PIM export           | Eligible vs active, activation history                   | Assignments outside PIM                         |
 
 Write it as an AUDIT REPORT, not an incident report. The write up might end up looking similar to earlier ones, but it's a different structure:
 
