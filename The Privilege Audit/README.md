@@ -7,7 +7,7 @@ The Audit Path
 
 <img width="1366" height="768" alt="Azure Lab 3 SS1" src="https://github.com/user-attachments/assets/08dbafd5-5750-41cc-bcab-aa5bba991c93" />
 
-Looking at the CSV format versions of the role assignments was where the audit found what appears to be an account with a suspicious amount of privileged access over a vast number of resources. This account was found the be the Owner over these resources which goes against maintaining secure security configurations. Another one of the violations going against the security practices is that the export is that the groups are shown but the members inside of the groups aren't. This can present all sorts of other issues that can make it difficult to track and manage accounts and over allocating powerful access to other accounts. 
+Looking at the CSV format versions of the role assignments was where the audit found what appears to be an account with a suspicious amount of privileged access over a vast number of resources. This account was found the be the Owner over these resources which goes against maintaining secure security configurations. Another one of the violations going against the security practices is that the groups are shown but the members inside of the groups aren't. This can present all sorts of other issues that can make it difficult to track and manage accounts and over allocating powerful access to other accounts. 
 
 
  2.  Azure CLI
@@ -29,7 +29,7 @@ The next step in the audit came down to using the Azure Resource Graph and using
 
 <img width="1366" height="768" alt="Screenshot from 2026-09-24 17-16-01" src="https://github.com/user-attachments/assets/b91cc75f-2022-4c40-8593-dd57b1fa1bd4" />
 
-Using the principal ID of the deleted account in the query led to the findings of the active assignments present in the portal. However, in order to see the eligible role assignment that meant the audit had inspect the PIM side of the portal. 
+Using the principal ID of the deleted account in the query led to the findings of the active assignments present in the portal. However, in order to see the eligible role assignment that meant the audit had to inspect the PIM side of the portal. 
 
 4. Privileged Identity Management export
 Inspecting the Privileged Identity Management portion of the audit meant examining the Azure resources under the management blade of the portal.
@@ -73,7 +73,7 @@ Scope and methodology:
 Using the MadHatLabs Tenant in conjunction with my job as a Reader and an PIM-eligible role the following methods were used in the audit. Starting off with the simplest and user-friendly method of using the IAM blade section to access export capabilities. Then I moved on the using the Azure Command Line Interface for a more broad look at the resources and roles. Then came to using the KQL Resource Graph to inspect the entire tenant and lastly the Privileged Identity Management to observe the activation history and eligibility role assignments. 
 
 Findings:
-In conclusion, the findings of the audit consisted of encountering an orphaned role assignment that was tied to a deleted principal. The next encounter consisted of unnecessary Owner allocations utilized across a vast number of scopes. And lastly, the detection of a standing privileged access that belongs to the PIM eligible accesses. 
+In conclusion, the findings of the audit consisted of encountering an orphaned role assignment that was tied to a deleted principal. The next encounter consisted of unnecessary Owner allocations utilized across a vast number of scopes. Lastly, the detection of a standing privileged access that belongs to the PIM eligible accesses. 
 
 Signifigance:
 Finding the orphaned role assignment matters because it is security risk waiting to taken advantage of. It doesn't just go against the recommended security configurations it also stands out as a red flag in the audit cycle. The audit cycle is meant to bring a virtual spring cleaning to the accesses that need to be tidied up and resources and roles that need some dusting. The orphan finding means since Microsoft Azure saves the GUID and not the name an opportunity is left open for a principal to be recreated with the object ID. This would give any malicious actor who would pursue this route the ability access those permissions tied to that role. The audit highlights the significance of such a finding because it means old role assignments can linger even when their original identity no longer exists, which would then create unnecessary risk.  
