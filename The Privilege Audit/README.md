@@ -68,16 +68,15 @@ The different methods used in this audit, and their respective pros and cons are
 | Resource Graph (KQL) | Whole tenant in one query                                | Eligible assignments                            |
 | PIM export           | Eligible vs active, activation history                   | Assignments outside PIM                         |
 
-Write it as an AUDIT REPORT, not an incident report. The write up might end up looking similar to earlier ones, but it's a different structure:
 
+Scope and methodology.
+Using the MadHatLabs Tenant in conjunction with my job as a Reader and an PIM-eligible role the following methods were used in the audit. Starting off with the simplest and user-friendly method of using the IAM blade section to access export capabilities. Then I moved on the using the Azure Command Line Interface for a more broad look at the resources and roles. Then came to using the KQL Resource Graph to inspect the entire tenant and lastly the Privileged Identity Management to observe the activation history and eligibility role assignments. 
 
-Scope and methodology. What tenant, what access level you had (Reader, plus one PIM-eligible role), which four tools you used and why.
+Findings.
+In conclusion, the findings of the audit consisted of encountering an orphaned role assignment that was tied to a deleted principal. The next encounter consisted of unnecessary Owner allocations utilized across a vast number of scopes. And lastly, the detection of a standing privileged access that belongs to the PIM eligible accesses. 
 
-
-Findings, severity-ranked. Describe the CLASS of each finding, not the value: an orphaned role assignment tied to a deleted principal, redundant Owner grants applied across many scopes, apparently by script, standing privileged access that should have been PIM eligible instead.
-
-
-Why the orphan matters at all? Obviously try to say this in your own words because it's one of the most senior-sounding things in the whole write-up: a role assignment tied to a deleted principal is not just part of a mess that needs clean up at some point. Azure stores the GUID, not the name. If anything ever recreates a principal with that object ID, the permissions are sitting there waiting. An account that has potential for abuse that is a dormant account with access that nobody is monitoring.
-
+Finding the orphaned role assignment matters because it is security risk waiting to taken advantage of. It doesn't just go against the recommended security configurations it also stands out as a red flag in the audit cycle. The audit cycle is meant to bring a virtual spring cleaning to the accesses that need to be tidied up and resources and roles that need some dusting. The orphan finding means since Microsoft Azure saves the GUID and not the name an opportunity is left open for a principal to be recreated with the object ID. This would give any malicious actor who would pursue this route the ability access those permissions tied to that role. The audit highlights the significance of such a finding because it means old role assignments can linger even when their original identity no longer exists, which would then create unnecessary risk.  
 
 Recommendations: revoke orphaned assignments. Replace redundant Owner grants with the narrowest job-function role at the narrowest scope. Move standing privileged access to PIM-eligible with MFA, justification, and time limits. Assign to groups rather than users. Run this audit on a quarterly cadence and treat the output as a ticket queue so it actually gets done.
+
+Removing unjustified access like the orphaned assignments, shrinking over provisioned Owner allocations and tightening their scopes to the appropriate measures, adhering to the standard quarterly audit reviews, assigning roles to groups instead of individuals, and transferring standing privileged access to PIM-eligible accesses following the appropriate structure of secure role elevation.
