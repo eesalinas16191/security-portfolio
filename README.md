@@ -8,7 +8,7 @@ Target role: SOC Analyst / Security Analyst
 
 Currently: [BHA] | [Harlingen]
 
-Contact: [edsonsalinas281@gmail.com] · [www.linkedin.com/in/edson-salinas-399b281a9]
+Contact: [edsonsalinas281@gmail.com] · [https://www.linkedin.com/in/edsonsalinas/]
 
 ## Investigations
 
